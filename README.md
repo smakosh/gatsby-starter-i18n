@@ -16,7 +16,7 @@ yarn && yarn develop
 - 📈 SEO (meta tags, openGraph, structured data, twitter and more...)
 - 📊 One config file containing all the information you have change for SEO's sake
 - 💅 Styled-components
-- ⚛️ Context API ready to modify
+- ⚛️ Context API
 - ❌ Offline support (Disabled for the moment)
 - Eslint and workspace settings set to auto lint on save.
 
