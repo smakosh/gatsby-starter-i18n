@@ -32,6 +32,8 @@ const enhance = compose(
 			const localLang = localStorage.getItem('lang')
 			if (localLang) {
 				this.props.handleLanguage(localLang)
+			} else {
+				this.props.handleLanguage(navigator.language.split('-')[0])
 			}
 		}
 	})

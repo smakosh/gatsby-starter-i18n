@@ -9,7 +9,7 @@ import Provider from './Provider'
 import { Global } from './styles'
 import './layout.css'
 
-addLocaleData([...ar], [...en])
+addLocaleData(ar, en)
 
 const Layout = ({ children }) => (
 	<Provider>
