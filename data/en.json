@@ -1,7 +1,8 @@
 {
     "language": "عربي",
     "welcome": "Welcome",
-    "Logo": "Logo",
-    "Home": "Home",
+    "logo": "Logo",
+    "home": "Home",
+    "about": "About",
     "not_found": "404 - Page Not Found"
 }

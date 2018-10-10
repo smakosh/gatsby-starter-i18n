@@ -1,21 +1,26 @@
 import React from 'react'
+import styled from 'styled-components'
 import { FormattedMessage } from 'react-intl'
 import { Layout, Container } from '../components/common'
 import SEO from '../components/common/SEO'
 import Header from '../components/theme/Header'
 
-const NotFoundPage = () => (
+const AboutPage = () => (
 	<Layout>
 		<React.Fragment>
-			<SEO title="not_found" />
+			<SEO title="about" />
 			<Header />
-			<Container>
+			<Welcome as={Container}>
 				<h2>
-					<FormattedMessage id="not_found" />
+					<FormattedMessage id="about" />
 				</h2>
-			</Container>
+			</Welcome>
 		</React.Fragment>
 	</Layout>
 )
 
-export default NotFoundPage
+const Welcome = styled.div`
+	padding: 2rem 0;
+`
+
+export default AboutPage
