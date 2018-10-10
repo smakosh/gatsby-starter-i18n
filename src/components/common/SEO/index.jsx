@@ -1,88 +1,78 @@
 import React from 'react'
 import Helmet from 'react-helmet'
+import { injectIntl } from 'react-intl'
 import { Context } from '../Context'
-import {
-	url,
-	description,
-	social,
-	title,
-	socialLinks,
-	address,
-	contact,
-	legalName,
-	foundingDate,
-	logo,
-	favicon,
-	cover,
-	googleVerification
-} from '../../../../data/config'
+import config from '../../../../data/config'
+import configAr from '../../../../data/configAr'
 
-const SEO = ({ location = '' }) => (
+const SEO = ({ location = '', title, intl: { formatMessage } }) => (
 	<Context.Consumer>
 		{({ lang }) => {
 			const structuredDataOrganization = `{ 
 				"@context": "http://schema.org",
 				"@type": "Organization",
-				"legalName": "${legalName}",
-				"url": "${url}",
-				"logo": "${logo}",
-				"foundingDate": "${foundingDate}",
+				"legalName": "${lang === 'ar' ? configAr.legalName : config.legalName}",
+				"url": "${config.url}",
+				"logo": "${config.logo}",
+				"foundingDate": "${config.foundingDate}",
 				"founders": [{
 					"@type": "Person",
-					"name": "${legalName}"
+					"name": "${lang === 'ar' ? configAr.legalName : config.legalName}"
 				}],
 				"contactPoint": [{
 					"@type": "ContactPoint",
-					"email": "${contact.email}",
-					"telephone": "${contact.phone}",
+					"email": "${config.contact.email}",
+					"telephone": "${config.contact.phone}",
 					"contactType": "customer service"
 				}],
 				"address": {
 					"@type": "PostalAddress",
-					"addressLocality": "${address.city}",
-					"addressRegion": "${address.region}",
-					"addressCountry": "${address.country}",
-					"postalCode": "${address.zipCode}"
+					"addressLocality": "${lang === 'ar' ? configAr.address.city : config.address.city}",
+					"addressRegion": "${lang === 'ar' ? configAr.address.region : config.address.region}",
+					"addressCountry": "${lang === 'ar' ? configAr.address.country : config.address.country}",
+					"postalCode": "${config.address.zipCode}"
 				},
 				"sameAs": [
-					"${socialLinks.twitter}",
-					"${socialLinks.google}",
-					"${socialLinks.youtube}",
-					"${socialLinks.linkedin}",
-					"${socialLinks.instagram}",
-					"${socialLinks.github}"
+					"${config.socialLinks.twitter}",
+					"${config.socialLinks.google}",
+					"${config.socialLinks.youtube}",
+					"${config.socialLinks.linkedin}",
+					"${config.socialLinks.instagram}",
+					"${config.socialLinks.github}"
 				]
 			}`
 			return (
 				<Helmet>
 					<html lang={lang} dir={lang === 'ar' ? 'rtl' : 'ltr'} />
-					<meta name="google-site-verification" content={googleVerification} />
-					<link rel="shortcut icon" href={favicon} />
+					<meta name="google-site-verification" content={config.googleVerification} />
+					<link rel="shortcut icon" href={config.favicon} />
 
 					<meta name="robots" content="index, follow" />
-					<meta name="description" content={description} />
-					<meta name="image" content={cover} />
+					<meta name="description" content={lang === 'ar' ? configAr.description : config.description} />
+					<meta name="image" content={config.cover} />
 
-					<meta property="og:url" content={`${url}${location}`} />
+					<meta property="og:url" content={`${config.url}${location}`} />
 					<meta property="og:type" content="website" />
-					<meta property="og:title" content={title} />
-					<meta property="og:description" content={description} />
-					<meta property="og:image" content={cover} />
-					<meta property="fb:app_id" content={social.facebook} />
+					<meta property="og:title" content={lang === 'ar' ? configAr.title : config.title} />
+					<meta property="og:description" content={lang === 'ar' ? configAr.description : config.description} />
+					<meta property="og:image" content={config.cover} />
+					<meta property="fb:app_id" content={config.social.facebook} />
 
 					<meta name="twitter:card" content="summary_large_image" />
-					<meta name="twitter:creator" content={social.twitter} />
-					<meta name="twitter:site" content={socialLinks.twitter} />
-					<meta name="twitter:title" content={title} />
-					<meta name="twitter:description" content={description} />
-					<meta name="twitter:image:src" content={cover} />
+					<meta name="twitter:creator" content={config.social.twitter} />
+					<meta name="twitter:site" content={config.socialLinks.twitter} />
+					<meta name="twitter:title" content={lang === 'ar' ? configAr.title : config.title} />
+					<meta name="twitter:description" content={lang === 'ar' ? configAr.description : config.description} />
+					<meta name="twitter:image:src" content={config.cover} />
 					<script type="application/ld+json">{structuredDataOrganization}</script>
-					<link rel="publisher" href={socialLinks.google} />
-					<title>{title}</title>
+					<link rel="publisher" href={config.socialLinks.google} />
+					<title>
+						{formatMessage({ id: title })}
+					</title>
 				</Helmet>
 			)
 		}}
 	</Context.Consumer>
 )
 
-export { SEO }
+export default injectIntl(SEO)

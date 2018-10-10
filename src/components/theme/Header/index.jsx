@@ -10,11 +10,14 @@ const Header = () => (
 			<StyledHeader>
 				<Navbar as={Container}>
 					<Logo as={Link} to="/">
-						<FormattedMessage id="Logo" />
+						<FormattedMessage id="logo" />
 					</Logo>
 					<Links>
 						<Link to="/">
-							<FormattedMessage id="Home" />
+							<FormattedMessage id="home" />
+						</Link>
+						<Link to="/about">
+							<FormattedMessage id="about" />
 						</Link>
 						<Button type="button" onClick={toggleLanguage}>
 							<FormattedMessage id="language" />
