@@ -1,12 +1,13 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import { FormattedMessage } from 'react-intl'
-import { Context, Container, Button } from '../../common'
+import { Context, Container } from '../../common'
+import SelectLanguage from './SelectLanguage'
 import { Navbar, Links, StyledHeader, Logo } from './styles'
 
 const Header = () => (
 	<Context.Consumer>
-		{({ toggleLanguage }) => (
+		{({ toggleLanguage, lang }) => (
 			<StyledHeader>
 				<Navbar as={Container}>
 					<Logo as={Link} to="/">
@@ -19,9 +20,7 @@ const Header = () => (
 						<Link to="/about">
 							<FormattedMessage id="about" />
 						</Link>
-						<Button type="button" onClick={toggleLanguage}>
-							<FormattedMessage id="language" />
-						</Button>
+						<SelectLanguage lang={lang} toggleLanguage={toggleLanguage} />
 					</Links>
 				</Navbar>
 			</StyledHeader>
