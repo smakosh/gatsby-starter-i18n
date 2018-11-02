@@ -7,7 +7,7 @@ const Provider = ({ children, lang, toggleLanguage }) => (
 	<Context.Provider
 		value={{
 			lang,
-			toggleLanguage: () => toggleLanguage()
+			toggleLanguage: value => toggleLanguage(value)
 		}}
 	>
 		{children}
@@ -17,14 +17,9 @@ const Provider = ({ children, lang, toggleLanguage }) => (
 const enhance = compose(
 	withState('lang', 'handleLanguage', 'en'),
 	withHandlers({
-		toggleLanguage: ({ lang, handleLanguage }) => () => {
-			if (lang === 'ar') {
-				handleLanguage('en')
-				localStorage.setItem('lang', 'en')
-			} else {
-				handleLanguage('ar')
-				localStorage.setItem('lang', 'ar')
-			}
+		toggleLanguage: ({ handleLanguage }) => value => {
+			handleLanguage(value)
+			localStorage.setItem('lang', value)
 		}
 	}),
 	lifecycle({
