@@ -1,5 +1,7 @@
 ## Gatsby starter i18n
 
+![Support me on Patreon](https://c5.patreon.com/external/logo/become_a_patron_button.png)
+
 ### Getting started
 
 ```bash
