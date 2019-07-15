@@ -2,51 +2,39 @@ const config = require('./data/config');
 
 module.exports = {
 	siteMetadata: {
-		site_url: config.url,
+		site_url: config.url
 	},
 	plugins: [
 		'gatsby-plugin-react-helmet',
 		'gatsby-plugin-styled-components',
 		'gatsby-plugin-netlify',
 		'gatsby-plugin-catch-links',
-		'gatsby-plugin-sharp',
-		'gatsby-transformer-sharp',
 		{
 			resolve: 'gatsby-plugin-google-fonts',
 			options: {
-				fonts: [
-					'Cairo',
-					'Roboto'
-				]
+				fonts: ['Cairo', 'Roboto']
 			}
 		},
 		{
 			resolve: 'gatsby-plugin-canonical-urls',
 			options: {
-				siteUrl: config.url,
-			},
+				siteUrl: config.url
+			}
 		},
 		{
 			resolve: 'gatsby-plugin-google-analytics',
 			options: {
 				trackingId: config.googleAnalyticsID,
-				head: true,
-			},
+				head: true
+			}
 		},
 		{
 			resolve: 'gatsby-plugin-nprogress',
 			options: {
 				color: config.themeColor,
-				showSpinner: false,
-			},
-		},
-		/* {
-			resolve: 'gatsby-source-filesystem',
-			options: {
-				name: 'img',
-				path: `${__dirname}/src/images/`
+				showSpinner: false
 			}
-		}, */
+		},
 		{
 			resolve: 'gatsby-plugin-manifest',
 			options: {
@@ -60,16 +48,16 @@ module.exports = {
 					{
 						src: '/favicon/logo-192x192.png',
 						sizes: '192x192',
-						type: 'image/png',
+						type: 'image/png'
 					},
 					{
 						src: '/favicon/logo-512x512.png',
 						sizes: '512x512',
-						type: 'image/png',
-					},
-				],
-			},
-		},
+						type: 'image/png'
+					}
+				]
+			}
+		}
 		// 'gatsby-plugin-offline'
-	],
+	]
 };
