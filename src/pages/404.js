@@ -1,6 +1,7 @@
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
-import { Layout, Container } from '../components/common'
+import Layout from '../components/common/Layout'
+import Container from '../components/common/Container'
 import SEO from '../components/common/SEO'
 import Header from '../components/theme/Header'
 
